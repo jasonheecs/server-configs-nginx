@@ -2,9 +2,11 @@ server {
     listen [::]:80;
     listen 80;
 
-    server_name example.com;
     root /var/www/example.com;
-    index index.php index.html index.htm;
+
+    index index.php index.html index.htm index.nginx-debian.html;
+
+    server_name example.com;
 
     try_files $uri $uri/ @app;
     error_page 404 = @app;

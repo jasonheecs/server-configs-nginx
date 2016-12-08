@@ -2,22 +2,28 @@ server {
     listen [::]:80;
     listen 80;
 
-    root /var/www/example.com;
-
-    index index.php index.html index.htm index.nginx-debian.html;
-
+    # The host name to respond to
     server_name example.com;
 
-    try_files $uri $uri/ @app;
-    error_page 404 = @app;
+    # Site folder root
+    root /var/www/example.com;
 
-    location @app {
-        include custom/fastcgi/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-        fastcgi_param   SCRIPT_FILENAME     $document_root/index.php;
-        fastcgi_param   SCRIPT_NAME         $document_root/index.php;
-        fastcgi_param   DOCUMENT_URI        /index.php;
+    # Specify a charset
+    charset utf-8;
+
+    index index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ =404;
     }
 
-    include h5bp/basic.conf;
+    location ~ \.php$ {
+        include custom/fastcgi/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    }
+
+    # Apply h5bp only to the css, js and images folder
+    location ~ ^/(css|images|js)/ {
+        include h5bp/basic.conf;
+    }
 }

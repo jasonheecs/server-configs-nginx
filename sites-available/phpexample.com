@@ -15,7 +15,6 @@ server {
         fastcgi_param   SCRIPT_FILENAME     $document_root/index.php;
         fastcgi_param   SCRIPT_NAME         $document_root/index.php;
         fastcgi_param   DOCUMENT_URI        /index.php;
-        fastcgi_index index.php;
     }
 
     include h5bp/basic.conf;

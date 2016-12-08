@@ -22,7 +22,7 @@ server {
         fastcgi_pass unix:/run/php/php7.0-fpm.sock;
     }
 
-    include h5bp/protect-system-files.conf;
+    include h5bp/location/protect-system-files.conf;
 
     # Apply h5bp only to the css, js and images folder
     location ~ ^/(css|images|js)/ {

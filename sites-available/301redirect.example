@@ -1,0 +1,10 @@
+server {
+  listen [::]:80;
+  listen 80;
+
+  # The host name to respond to
+  server_name *.mydomain.tld mydomain.tld;
+
+  # redirect to different domain
+  return 301 http://otherdomain.tld$request_uri;
+}

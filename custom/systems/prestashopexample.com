@@ -1,3 +1,5 @@
+include custom/php.conf;
+
 server {
     listen [::]:80;
     listen 80;
@@ -51,7 +53,8 @@ server {
     location ~ \.php$ {
         try_files $uri =404;
         fastcgi_keep_conn on;
-        include custom/fastcgi/fastcgi_params;
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        include custom/fastcgi/fastcgi-php.conf;
+        fastcgi_pass php;
+        fastcgi_read_timeout 300;
     }
 }

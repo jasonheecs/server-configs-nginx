@@ -25,8 +25,7 @@ server {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_pass php;
         fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include custom/fastcgi/fastcgi_params;
+        include custom/fastcgi/fastcgi.conf;
     }
 
     include h5bp/location/protect-system-files.conf;

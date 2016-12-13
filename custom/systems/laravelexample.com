@@ -11,6 +11,9 @@ server {
     # Specify a charset
     charset utf-8;
 
+    access_log /var/log/nginx/example.com.access.log;
+    error_log /var/log/nginx/example.com.error.log;
+
     index index.php index.html index.htm;
 
     location / {

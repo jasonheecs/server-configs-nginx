@@ -1,5 +1,3 @@
-include custom/php.conf;
-
 server {
     listen [::]:80;
     listen 80;
@@ -13,8 +11,8 @@ server {
     # Specify a charset
     charset utf-8;
 
-    access_log /var/log/nginx/example.com.access.log;
-    error_log /var/log/nginx/example.com.error.log;
+    access_log /var/log/nginx/example.com-access.log;
+    error_log /var/log/nginx/example.com-error.log;
 
     index index.php index.html index.htm;
 
@@ -51,7 +49,6 @@ server {
     include h5bp/basic.conf;
 
     location ~ \.php$ {
-        try_files $uri =404;
         fastcgi_keep_conn on;
         include custom/fastcgi/fastcgi-php.conf;
         fastcgi_pass php;

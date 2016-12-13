@@ -19,7 +19,7 @@ server {
 
     location ~ \.php$ {
         include custom/fastcgi/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        fastcgi_pass php;
     }
 
     include h5bp/location/protect-system-files.conf;
